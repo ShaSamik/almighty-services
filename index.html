@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Almighty Services — Premium Roadside Assistance</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    /* --------------------------------------------------
+       ALMIGHTY SERVICES — PREMIUM SITE
+       Save this file as index.html and put your logo at /assets/logo.png
+       Color palette used (from your logo):
+         --alm-yellow: #F6C02A;  (Almighty Yellow)
+         --alm-cyan:   #00D1FF;  (Almighty Cyan)
+         --alm-blue:   #00A7D9;  (Almighty Blue)
+         --alm-deep:   #061025;  (Almighty Deep)
+         --alm-dark:   #0B0B0B;  (Almighty Dark)
+         neutral gray: #9CA3AF
+    --------------------------------------------------*/
+
+    :root{
+      --alm-yellow:#F6C02A; 
+      --alm-cyan:#00D1FF; 
+      --alm-blue:#00A7D9; 
+      --alm-deep:#061025; 
+      --alm-dark:#0B0B0B; 
+      --muted:#9CA3AF;
+      --glass: rgba(255,255,255,0.04);
+      --card: rgba(255,255,255,0.03);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:'Montserrat',system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial; background:linear-gradient(180deg,var(--alm-dark) 0%, #050506 100%); color:#fff}
+
+    /* ---------- layout ---------- */
+    header{position:fixed;top:16px;left:50%;transform:translateX(-50%);width:min(1200px,94%);display:flex;align-items:center;justify-content:space-between;gap:20px;padding:14px;border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.06));backdrop-filter:blur(6px);z-index:60;box-shadow:0 6px 30px rgba(0,0,0,0.6)}
+    .logo{display:flex;align-items:center;gap:12px}
+    .logo img{height:48px;width:48px;border-radius:10px;object-fit:cover}
+    .brand{font-weight:800;letter-spacing:0.6px;color:var(--alm-yellow)}
+    nav{display:flex;gap:14px;align-items:center}
+    nav a{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:10px;transition:all .18s}
+    nav a:hover{color:#fff;background:rgba(255,255,255,0.03)}
+
+    /* ---------- hero ---------- */
+    .hero{margin-top:110px;display:grid;grid-template-columns:1fr 480px;gap:40px;align-items:center;max-width:1200px;margin-left:auto;margin-right:auto;padding:40px 20px}
+    .hero-left{padding:30px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:18px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 20px 60px rgba(5,8,12,0.8)}
+    .kicker{display:inline-block;padding:6px 10px;background:linear-gradient(90deg,var(--alm-blue),var(--alm-cyan));border-radius:8px;color:#001; font-weight:700}
+    h1{font-size:44px;margin:14px 0 6px;line-height:1.02}
+    p.lead{color:var(--muted);font-size:16px;max-width:56ch}
+    .hero-ctas{margin-top:18px;display:flex;gap:12px}
+    .btn{padding:12px 18px;border-radius:12px;border:none;cursor:pointer;font-weight:700}
+    .btn-primary{background:linear-gradient(90deg,var(--alm-cyan),var(--alm-blue));color:#001}
+    .btn-urgent{background:var(--alm-yellow);color:#001}
+
+    /* right card */
+    .card-vehicle{background:linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.55));padding:18px;border-radius:16px;border:1px solid rgba(255,255,255,0.03)}
+    .card-vehicle img{width:100%;height:260px;object-fit:contain}
+    .card-vehicle .meta{display:flex;justify-content:space-between;margin-top:12px}
+
+    /* ---------- services ---------- */
+    .services{max-width:1200px;margin:40px auto;padding:24px}
+    .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px}
+    .service{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.06));padding:20px;border-radius:14px;border:1px solid rgba(255,255,255,0.02);transition:transform .28s, box-shadow .28s}
+    .service:hover{transform:translateY(-6px);box-shadow:0 18px 50px rgba(0,0,0,0.6)}
+    .service h4{color:var(--alm-cyan)}
+    .price{font-weight:800;color:var(--alm-yellow);font-size:20px}
+
+    /* ---------- appointment form ---------- */
+    .appointment{max-width:900px;margin:36px auto;padding:26px;border-radius:16px;background:linear-gradient(135deg, rgba(255,255,255,0.02), rgba(0,0,0,0.06));border:1px solid rgba(255,255,255,0.03)}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    input,select,textarea{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.04);padding:12px;border-radius:10px;color:#fff;width:100%;outline:none}
+    .muted{color:var(--muted);font-size:13px}
+
+    /* ---------- floating contact buttons ---------- */
+    .float-ctas{position:fixed;right:20px;bottom:20px;display:flex;flex-direction:column;gap:12px;z-index:80}
+    .float-cta{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 30px rgba(0,0,0,0.5);cursor:pointer;border:1px solid rgba(255,255,255,0.04)}
+    .whatsapp{background:linear-gradient(180deg,#00b894,#00a86b);color:#fff}
+    .sms{background:linear-gradient(180deg,#ffd166,#f6c02a);color:#001}
+
+    /* ---------- map and reviews ---------- */
+    .map-reviews{max-width:1200px;margin:30px auto;display:grid;grid-template-columns:1fr 420px;gap:20px;padding:20px}
+    .map {border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,0.03)}
+    iframe{width:100%;height:100%;min-height:360px;border:0}
+
+    .reviews{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.05));padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+    .review{padding:12px;border-radius:10px;margin-bottom:10px;background:rgba(255,255,255,0.02)}
+    .review p{color:var(--muted);font-size:14px}
+    .stars{color:var(--alm-yellow);font-weight:800}
+
+    /* carousel */
+    .carousel{position:relative}
+    .carousel .controls{display:flex;gap:8px;justify-content:center;margin-top:10px}
+    .dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,0.12)}
+    .dot.active{background:var(--alm-cyan)}
+
+    /* ---------- footer ---------- */
+    footer{margin-top:30px;padding:28px;background:linear-gradient(180deg, rgba(0,0,0,0.4), rgba(0,0,0,0.6));border-top:1px solid rgba(255,255,255,0.02);}
+    .footer-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 300px;gap:20px;align-items:start}
+    .socials{display:flex;gap:10px}
+    .small{color:var(--muted);font-size:13px}
+
+    /* responsive */
+    @media (max-width:980px){.hero{grid-template-columns:1fr;}.map-reviews{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr}}
+
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <img src="assets/logo.jpg" alt="Almighty Services logo" id="brandLogo" />
+    <div>
+      <div class="brand">Almighty Services</div>
+      <!-- <div class="small">Premium Mobile Roadside Assistance</div> -->
+    </div>
+  </div>
+  <nav>
+    <a href="#services">Services</a>
+    <a href="#appointment">Book</a>
+    <a href="#map">Service Area</a>
+    <a href="#reviews">Reviews</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero" aria-label="Hero">
+    <div class="hero-left">
+      <div class="kicker">ALMIGHTY</div>
+      <h1>Fast. Reliable. Roadside — Wherever You Are</h1>
+      <p class="lead">Premium mobile mechanic services for tires, jumpstarts, lockouts, and on-the-spot fuel delivery. Transparent pricing, rapid response, professional technicians.</p>
+
+      <div class="hero-ctas">
+        <button class="btn btn-primary" onclick="document.getElementById('appointment').scrollIntoView({behavior:'smooth'})">Book Appointment</button>
+        <button class="btn btn-urgent" onclick="openEmergencyModal()">Emergency Now</button>
+      </div>
+
+      <div style="margin-top:18px;display:flex;gap:12px;flex-wrap:wrap">
+        <div style="background:var(--card);padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.03)"><div class="muted">Avg Response</div><div style="font-weight:800">&lt; 30 min</div></div>
+        <div style="background:var(--card);padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.03)"><div class="muted">Payment</div><div style="font-weight:800">Card • Venmo • Cash</div></div>
+      </div>
+    </div>
+
+    <aside class="card-vehicle">
+      <img src="assets/almighty-hero.png" alt="Almighty hero artwork" />
+      <div class="meta">
+        <div>
+          <div class="muted">Featured Service</div>
+          <div style="font-weight:800">Tire Service — <span class="price">$110</span></div>
+        </div>
+        <div style="text-align:right">
+          <div class="muted">Typical Arrival</div>
+          <div style="font-weight:800">25 min</div>
+        </div>
+      </div>
+    </aside>
+  </section>
+
+  <section id="services" class="services">
+    <h3>Services & Pricing</h3>
+    <div class="services-grid">
+      <div class="service"><h4>Tire Service</h4><p class="muted">On-site tire change, repair, and balancing.</p><div class="service-time">Avg: 25 min</div><div style="margin-top:12px" class="price">$110</div></div>
+      <div class="service"><h4>Jumpstart</h4><p class="muted">Fast battery jumpstarts and battery checks.</p><div class="service-time">Avg: 10 min</div><div style="margin-top:12px" class="price">$65</div></div>
+      <div class="service"><h4>Lockout</h4><p class="muted">Professional non-destructive vehicle entry.</p><div class="service-time">Avg: 5 min</div><div style="margin-top:12px" class="price">$100</div></div>
+      <div class="service"><h4>Gas Delivery</h4><p class="muted">Quick fuel delivery to get you moving again.</p><div class="service-time">Avg: 10 min</div><div style="margin-top:12px" class="price">$90</div></div>
+    </div>
+  </section>
+
+  <section id="appointment" class="appointment" aria-label="Book appointment">
+    <h3 style="color:var(--alm-yellow);margin-bottom:8px">Book an Appointment</h3>
+    <p class="muted">Fill the form and we'll confirm availability via SMS/WhatsApp.</p>
+    <div style="margin-top:16px" class="grid-2">
+      <input id="name" placeholder="Full Name" />
+      <input id="phone" placeholder="Phone number (+1...)" />
+    </div>
+    <div style="margin-top:12px" class="grid-2">
+      <select id="serviceSelect">
+        <option value="Tire Service">Tire Service — $110</option>
+        <option value="Jumpstart">Jumpstart — $65</option>
+        <option value="Lockout">Lockout — $100</option>
+        <option value="Gas Delivery">Gas Delivery — $90</option>
+      </select>
+      <input id="date" type="datetime-local" />
+    </div>
+    <textarea id="notes" rows="4" placeholder="Additional details (location, vehicle)" style="margin-top:12px"></textarea>
+    <div style="display:flex;gap:10px;margin-top:14px;align-items:center">
+      <button class="btn btn-primary" onclick="submitAppointment()">Submit Request</button>
+      <div class="muted">Or call us: <strong style="color:var(--alm-cyan)">+1 555 123 4567</strong></div>
+    </div>
+    <div id="apptMsg" style="margin-top:12px;display:none"></div>
+  </section>
+
+  <section id="map" class="map-reviews">
+    <div class="map">
+      <!-- Replace the src with a real embed for your exact service area if desired -->
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3105.001720077291!2d-77.07085808464882!3d38.80483577957033!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b7b7b1a1a8f7a3%3A0x9c6b2f8a3b6f8c2f!2sAlexandria%2C%20VA!5e0!3m2!1sen!2sus!4v1699777777777" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+
+    <aside class="reviews" id="reviews">
+      <h4 style="color:var(--alm-cyan)">Customer Reviews</h4>
+      <div id="carousel" class="carousel" aria-live="polite">
+        <div class="review"><div class="stars">★★★★★</div><p>Amazing service — arrived in 20 mins and changed my tire quickly. Highly recommend!</p><div class="muted">— Sarah R.</div></div>
+        <div class="review" style="display:none"><div class="stars">★★★★★</div><p>Professional and fast. Saved my night. Great prices, too.</p><div class="muted">— Mark T.</div></div>
+        <div class="review" style="display:none"><div class="stars">★★★★★</div><p>Quick jumpstart and friendly technician. Will use again.</p><div class="muted">— Priya S.</div></div>
+      </div>
+      <div class="controls"><div id="dots" style="display:flex;gap:8px;margin-top:12px"></div></div>
+    </aside>
+  </section>
+
+</main>
+
+<!-- Floating CTA: WhatsApp + SMS -->
+<div class="float-ctas" aria-hidden="false">
+  <!-- WhatsApp: replace number below with your business number in international format (no + or dashes) e.g. 15551234567 -->
+  <a class="float-cta whatsapp" href="https://wa.me/15551234567?text=Hi%20Almighty%20Services%2C%20I%20need%20assistance" target="_blank" rel="noopener noreferrer" title="WhatsApp">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M20.52 3.48A11.86 11.86 0 0 0 12 0C5.373 0 .02 5.353 0 12.01A11.95 11.95 0 0 0 3.09 18.9L0 24l5.3-3.09A11.94 11.94 0 0 0 12 24c6.628 0 12-5.372 12-12 0-3.2-1.25-6.23-3.48-8.52z" fill="#fff" opacity="0.06"></path><path d="M12.004 22.001c-2.03 0-4.03-.54-5.75-1.56l-.41-.24-3.15 1 1-3.08-.26-.41A9.997 9.997 0 1 1 22.004 12c0 5.52-4.484 10-10 10z" fill="#fff"/><path d="M17.53 14.21c-.29-.14-1.7-.84-1.96-.94-.26-.1-.45-.14-.64.14-.18.28-.7.93-.86 1.12-.16.18-.32.21-.61.07-1.66-.83-2.75-1.49-3.86-3.34-.29-.48.29-.45.84-1.5.09-.13.04-.24-.03-.33-.08-.09-.64-1.54-.88-2.11-.23-.55-.47-.48-.64-.49-.17-.01-.37-.01-.57-.01-.19 0-.5.07-.76.36-.26.28-1 1-1 2.44 0 1.45 1.03 2.86 1.18 3.06.14.18 2.03 3.1 4.92 4.23 1.01.43 1.8.69 2.42.88.96.28 1.84.24 2.53.15.77-.11 1.7-.69 1.94-1.36.24-.66.24-1.22.17-1.36-.06-.14-.23-.22-.52-.35z" fill="#fff"/></svg>
+  </a>
+
+  <!-- SMS: use sms: link for mobile devices; number placeholder -->
+  <a class="float-cta sms" href="sms:+15551234567&body=Hi%20Almighty%20Services%2C%20I%20need%20help" title="SMS">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M20 2H4C2.9 2 2 2.9 2 4v12c0 1.1.9 2 2 2h14l4 4V4c0-1.1-.9-2-2-2z" fill="#001" opacity="0.08"></path><path d="M20 4H4v12h14l4 4V4z" fill="#fff"/></svg>
+  </a>
+</div>
+
+<!-- Emergency Modal -->
+<div id="emModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);justify-content:center;align-items:center;z-index:999">
+  <div style="background:linear-gradient(180deg,#071323,#05070a);padding:22px;border-radius:14px;width:min(420px,94%);border:2px solid rgba(255,255,255,0.03)">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+      <strong style="color:var(--alm-yellow)">Emergency Request</strong>
+      <button onclick="closeEmergencyModal()" style="background:none;border:none;color:var(--muted);font-size:20px">×</button>
+    </div>
+    <input id="emName" placeholder="Your name" style="width:100%;padding:12px;margin-top:8px;border-radius:8px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);color:#fff">
+    <input id="emPhone" placeholder="Phone" style="width:100%;padding:12px;margin-top:8px;border-radius:8px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);color:#fff">
+    <input id="emLocation" placeholder="Location or cross streets" style="width:100%;padding:12px;margin-top:8px;border-radius:8px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);color:#fff">
+    <textarea id="emIssue" placeholder="Brief issue (flat tire, won't start...)" style="width:100%;padding:12px;margin-top:8px;border-radius:8px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);color:#fff"></textarea>
+    <div style="display:flex;gap:8px;margin-top:12px;justify-content:flex-end">
+      <button onclick="closeEmergencyModal()" style="padding:10px 14px;border-radius:8px;background:none;border:1px solid rgba(255,255,255,0.03);color:var(--muted)">Cancel</button>
+      <button onclick="sendEmergencyAlert()" style="padding:10px 14px;border-radius:8px;background:var(--alm-yellow);color:#001;font-weight:700">Send Alert</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div style="display:flex;gap:12px;align-items:center"><img src="assets/logo.jpg" style="height:44px;border-radius:8px;" alt="logo"><div style="font-weight:800;color:var(--alm-yellow)">Almighty Services</div></div>
+      <p class="small" style="margin-top:10px;max-width:380px">Premium mobile mechanic services — available 24/7. Transparent pricing, friendly technicians, and quick ETA.</p>
+    </div>
+    <div>
+      <div style="font-weight:700;margin-bottom:8px">Contact</div>
+      <div class="small">Phone: <strong style="color:var(--alm-cyan)">+1 555 123 4567</strong></div>
+      <div class="small">WhatsApp: <strong style="color:var(--alm-cyan)">+1 555 123 4567</strong></div>
+      <div class="small" style="margin-top:8px">Address: Serving Alexandria, VA and surrounding areas</div>
+    </div>
+    <div>
+      <div style="font-weight:700;margin-bottom:8px">Quick Links</div>
+      <div style="display:flex;flex-direction:column;gap:8px"><a class="small" href="#services">Services</a><a class="small" href="#appointment">Book</a><a class="small" href="#map">Service Area</a><a class="small" href="#reviews">Reviews</a></div>
+    </div>
+  </div>
+  <div style="max-width:1200px;margin:18px auto 0;color:var(--muted);text-align:center">© <span id="yr"></span> Almighty Services. All rights reserved.</div>
+</footer>
+
+<script>
+  // set year
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // ---------------- Appointment handling (client-only mock + localStorage) ----------------
+  function submitAppointment(){
+    const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const service = document.getElementById('serviceSelect').value;
+    const date = document.getElementById('date').value;
+    const notes = document.getElementById('notes').value.trim();
+
+    if(!name || !phone){
+      showApptMessage('Please enter name and phone number','error');
+      return;
+    }
+
+    // store mock booking locally
+    const bookings = JSON.parse(localStorage.getItem('alm_bookings')||'[]');
+    bookings.unshift({id:Date.now(),name,phone,service,date,notes});
+    localStorage.setItem('alm_bookings', JSON.stringify(bookings));
+
+    // show confirmation and quick contact links
+    showApptMessage(`Thanks ${name.split(' ')[0]} — we received your request. We'll confirm via SMS / WhatsApp.`, 'success');
+
+    // quick open whatsapp (prefilled) - on desktop opens web
+    const waNumber = '15551234567';
+    const waText = encodeURIComponent(`Hi Almighty Services, my name is ${name}. I requested: ${service}. Phone: ${phone}. Desired: ${date||'ASAP'}. ${notes}`);
+
+    // open whatsapp in new tab after a short delay
+    setTimeout(()=>{
+      window.open(`https://wa.me/${waNumber}?text=${waText}`,'_blank');
+    },800);
+
+    // reset form
+    document.getElementById('name').value='';
+    document.getElementById('phone').value='';
+    document.getElementById('date').value='';
+    document.getElementById('notes').value='';
+  }
+
+  function showApptMessage(msg,type){
+    const el = document.getElementById('apptMsg');
+    el.style.display = 'block';
+    el.textContent = msg;
+    el.style.color = type==='error'? '#ff6b6b' : '#b7f8ff';
+    setTimeout(()=>{el.style.display='none'},7000);
+  }
+
+  // ---------------- Emergency modal ----------------
+  function openEmergencyModal(){ document.getElementById('emModal').style.display='flex'; }
+  function closeEmergencyModal(){ document.getElementById('emModal').style.display='none'; }
+  function sendEmergencyAlert(){
+    const name = document.getElementById('emName').value.trim();
+    const phone = document.getElementById('emPhone').value.trim();
+    const location = document.getElementById('emLocation').value.trim();
+    const issue = document.getElementById('emIssue').value.trim();
+    if(!phone || !location){ alert('Please enter phone and location'); return; }
+
+    // store locally as emergency
+    const em = JSON.parse(localStorage.getItem('alm_emergencies')||'[]');
+    em.unshift({id:Date.now(),name,phone,location,issue});
+    localStorage.setItem('alm_emergencies', JSON.stringify(em));
+
+    alert('Emergency alert sent to our dispatch. Help is on the way.');
+    closeEmergencyModal();
+
+    // open SMS app on mobile with prefilled message
+    const sms = `sms:${phone}?body=${encodeURIComponent('Emergency request sent to Almighty Services. We will contact you shortly.')}`;
+    // don't auto-open on desktop; only provide link display
+    // window.location.href = sms;
+  }
+
+  // --------------- Reviews carousel ---------------
+  (function initCarousel(){
+    const reviews = document.querySelectorAll('#carousel .review');
+    const dotsWrap = document.getElementById('dots');
+    let idx = 0;
+    reviews.forEach((r,i)=>{
+      const dot = document.createElement('div'); dot.className='dot'; if(i===0) dot.classList.add('active'); dotsWrap.appendChild(dot);
+      dot.addEventListener('click', ()=>{ show(i); });
+    });
+    function show(i){ reviews[idx].style.display='none'; dotsWrap.children[idx].classList.remove('active'); idx=i; reviews[idx].style.display='block'; dotsWrap.children[idx].classList.add('active'); }
+    function next(){ show((idx+1)%reviews.length); }
+    let t = setInterval(next,4500);
+    // pause on hover
+    const carousel = document.getElementById('carousel');
+    carousel.addEventListener('mouseenter', ()=> clearInterval(t));
+    carousel.addEventListener('mouseleave', ()=> t=setInterval(next,4500));
+  })();
+
+  // -------------- Accessibility small improvements --------------
+  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape'){ closeEmergencyModal(); } });
+
+</script>
+</body>
+</html>
