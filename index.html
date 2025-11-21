@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Almighty Services — Premium Roadside Assistance</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
+  
   <style>
     /* --------------------------------------------------
        ALMIGHTY SERVICES — PREMIUM SITE
@@ -108,13 +111,18 @@
 
 <header>
   <div class="logo">
-    <img src="assets/logo.jpg" alt="Almighty Services logo" id="brandLogo" />
-    <div>
-      <div class="brand">Almighty Services</div>
-      <!-- <div class="small">Premium Mobile Roadside Assistance</div> -->
-    </div>
+    <img src="assets/logo.jpg" alt="Almighty Services logo" />
+    <div class="brand">Almighty Services</div>
   </div>
-  <nav>
+
+  <!-- Hamburger -->
+  <div class="hamburger" id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <nav id="navMenu">
     <a href="#services">Services</a>
     <a href="#appointment">Book</a>
     <a href="#map">Service Area</a>
@@ -131,7 +139,7 @@
 
       <div class="hero-ctas">
         <button class="btn btn-primary" onclick="document.getElementById('appointment').scrollIntoView({behavior:'smooth'})">Book Appointment</button>
-        <button class="btn btn-urgent" onclick="openEmergencyModal()">Emergency Now</button>
+        <button class="btn btn-urgent" onclick="openEmergencyModal()">Emergency(Call Now)</button>
       </div>
 
       <div style="margin-top:18px;display:flex;gap:12px;flex-wrap:wrap">
@@ -141,7 +149,7 @@
     </div>
 
     <aside class="card-vehicle">
-      <img src="assets/almighty-hero.png" alt="Almighty hero artwork" />
+      <img src="assets/logo.jpg" alt="Almighty hero artwork" />
       <div class="meta">
         <div>
           <div class="muted">Featured Service</div>
@@ -259,6 +267,9 @@
   <div style="max-width:1200px;margin:18px auto 0;color:var(--muted);text-align:center">© <span id="yr"></span> Almighty Services. All rights reserved.</div>
 </footer>
 
+
+
+<script src="script.js"></script>
 <script>
   // set year
   document.getElementById('yr').textContent = new Date().getFullYear();
@@ -354,5 +365,6 @@
   document.addEventListener('keydown', (e)=>{ if(e.key==='Escape'){ closeEmergencyModal(); } });
 
 </script>
+
 </body>
 </html>
