@@ -141,7 +141,9 @@
       <p class="lead">Premium mobile mechanic services for tires, jumpstarts, lockouts, and on-the-spot fuel delivery. Transparent pricing, rapid response, professional technicians.</p>
 
       <div class="hero-ctas">
-        <button class="btn btn-primary" onclick="document.getElementById('appointment').scrollIntoView({behavior:'smooth'})">Book Appointment</button>
+        <!-- <button class="btn btn-primary" onclick="document.getElementById('appointment').scrollIntoView({behavior:'smooth'})">Book Appointment</button> -->
+         <button class="btn btn-primary" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/thatdevhassan/30min'});return false;" >Schedule Service</button>
+              
         <button class="btn btn-urgent" onclick="openEmergencyModal()">Emergency(Call Now)</button>
       </div>
 
@@ -176,8 +178,8 @@
     </div>
   </section>
 
-  <section id="appointment" class="appointment" aria-label="Book appointment">
-    <h3 style="color:var(--alm-yellow);margin-bottom:8px">Book an Appointment</h3>
+  <!-- <section id="appointment" class="appointment" aria-label="Book appointment">
+    <h3 style="color:var(--alm-yellow);margin-bottom:8px"> Schedule Service</h3>
     <p class="muted">Fill the form and we'll confirm availability via SMS/WhatsApp.</p>
     <div style="margin-top:16px" class="grid-2">
       <input id="name" placeholder="Full Name" />
@@ -198,7 +200,8 @@
       <div class="muted">Or call us: <strong style="color:var(--white)">+1 555 123 4567</strong></div>
     </div>
     <div id="apptMsg" style="margin-top:12px;display:none"></div>
-  </section>
+  </section> -->
+  
 
   <section id="map" class="map-reviews">
     <div class="map">
@@ -212,6 +215,7 @@
         <div class="review"><div class="stars">★★★★★</div><p>Amazing service — arrived in 20 mins and changed my tire quickly. Highly recommend!</p><div class="muted">— Sarah R.</div></div>
         <div class="review" style="display:none"><div class="stars">★★★★★</div><p>Professional and fast. Saved my night. Great prices, too.</p><div class="muted">— Mark T.</div></div>
         <div class="review" style="display:none"><div class="stars">★★★★★</div><p>Quick jumpstart and friendly technician. Will use again.</p><div class="muted">— Priya S.</div></div>
+        <div class="review" style="display:none"><div class="stars">★★★★★</div><p>Quick jumpstart and friendly technician. Will use again.</p><div class="muted">— Jack T.</div></div>
       </div>
       <div class="controls"><div id="dots" style="display:flex;gap:8px;margin-top:12px"></div></div>
     </aside>
